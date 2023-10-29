@@ -5,7 +5,7 @@ Author: Dou Liyou
 Program Time: 2017-07-14
 Version: 1.0
 
-Script using: 
+Script using:
 '''
 
 import random
@@ -60,8 +60,8 @@ def generateExpression():
     exp = []
     exp.append(makeRandomOper())
     exp.append(makeRandomInt(0,49))
-# the second number need follow more critical rules by using new method 
-# produceNum(givenNum,Oper,max) 
+# the second number need follow more critical rules by using new method
+# produceNum(givenNum,Oper,max)
     exp.append(produceNum(exp[1],exp[0],99))
     if exp[0]=='+':
         return exp
@@ -90,7 +90,7 @@ def generateThreeExp():
             testValue = cal(exp)
             if testValue < 0:
                 exp[2] = exp[2] + abs(testValue)
-                print exp
+                print(exp)
             return exp
         else:
             for i in range(2,3):
@@ -103,7 +103,7 @@ def generateThreeExp():
             testValue = cal(exp)
             if testValue < 0:
                 exp[2] = exp[2] + abs(testValue)
-                print exp
+                print(exp)
             return exp
 
 
@@ -145,7 +145,7 @@ def generateQuiz(amout):
 '''
 this method produce the number which is useful in the expression,
 e.g: give a 45 , then need a number which caculate with given one with add or minus, must not over 10
-     1,2,3,4 ; 11,12,13,14 ; 21,22,23,24, 31,32,33,34; 41,42,43,44; 51,52,53,54;    
+     1,2,3,4 ; 11,12,13,14 ; 21,22,23,24, 31,32,33,34; 41,42,43,44; 51,52,53,54;
 '''
 def produceNum(givenNum,Oper,max):
     nMax = max-givenNum
@@ -165,16 +165,16 @@ def produceNum(givenNum,Oper,max):
         mList=list(str(max))
         mLength = len(mList)
         if nLength == mLength:
-#            print 'exec this line nLength == mLength'
+#            print('exec this line nLength == mLength')
             m=0
             c=0
             for n in nList:
                 m = m*10 + makeRandomInt(int(n),int(mList[c]))
-                
+
                 c+=1
             return m
         elif nLength < mLength:
-#            print 'exec this line nLength < mLength'
+#            print('exec this line nLength < mLength')
             c=nLength-mLength
             n=0
             for m in mList:
@@ -187,13 +187,13 @@ def produceNum(givenNum,Oper,max):
             return n
     return 0
 if __name__=="__main__":
-    print 'auto generate quiz starts ...'
-    # print makeRandomOper()
+    print('auto generate quiz starts ...')
+    # print(makeRandomOper())
     # exptmp = generateExpression()
-    # print exptmp
-    # print formatExpression(exptmp)
-    # print calculate(exptmp[0],exptmp[1],exptmp[2])
-    # print generateQuiz(5)
+    # print(exptmp)
+    # print(formatExpression(exptmp))
+    # print(calculate(exptmp[0],exptmp[1],exptmp[2]))
+    # print(generateQuiz(5))
 
 #####generate 2 number expression.
 
@@ -201,11 +201,11 @@ if __name__=="__main__":
 
     myQuiz = generateQuiz(amountOfQuiz)
     operateDocx.writeDocx(myQuiz,'quizs.docx')
-    print 'quiz generated! '
+    print('quiz generated! ')
 
 #### test generateThreeExp
     # exp = generateThreeExp()
     #
-    # print formatExpression(exp)
-    # print 'result is : '+ str(cal(exp))
-    #print produceNum(45,'-',99)
+    # print(formatExpression(exp))
+    # print('result is : '+ str(cal(exp)))
+    #print(produceNum(45,'-',99))

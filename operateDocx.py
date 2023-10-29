@@ -2,7 +2,7 @@
 
 '''
 instruction: this script is used to write word document.
-dependent: py-docx 
+dependent: py-docx
 
 '''
 from docx import Document
@@ -54,7 +54,7 @@ def writeDocx(contentList,docxName):
     # p = document.add_paragraph(content)
     # document.add_page_break()
     total = contentList[0].__len__()
-    print 'amount of content: '+ str(total)
+    print('amount of content: '+ str(total))
     p = 0
     q = 0
     hasContent = True
@@ -71,10 +71,10 @@ def writeDocx(contentList,docxName):
         # else:
         #     row = (total -p)//3 + 1
         #     table = document.add_table(rows=20, cols=3)
-        print 'table added  ' + str(t)
+        print('table added  ' + str(t))
         num = 1
         for i in range(20):
-            # print 'insert row data'
+            # print('insert row data')
             for j in range(3):
                 if p >= total:
                     hasContent = False
@@ -98,7 +98,7 @@ def writeDocx(contentList,docxName):
 #            num +=1
 #        par = document.add_paragraph(u'本页答案： ')
 #        par.add_run(results).italic = True
-        print 'now in the '+ str(p) + 'step'
+        print('now in the '+ str(p) + 'step')
         t = t +1
         # document.add_paragraph('----------------------------------------------------------------------------------------------------------------------')
         document.add_page_break()
@@ -110,8 +110,8 @@ def writeDocx(contentList,docxName):
 def saveExpression(Expressions,docxName):
     document = Document()
     total = len(Expressions)
-    print 'Total Expressions are: '+str(total)
-    
+    print('Total Expressions are: '+str(total))
+
     index=0
     while index<total:
         table = document.add_table(rows=25, cols=4)
@@ -123,7 +123,7 @@ def saveExpression(Expressions,docxName):
     document.save(docxName)
 
 if __name__=="__main__":
-    print 'this is the main method'
+    print('this is the main method')
     operDocx()
     # order = id()
     # writeDocx( '\t'+str(order) + '.'+ ' 12  +  44 =\t' + str(order) + '.'+ '\t 12  +  44 =\t' + str(order) + '.'+ '\t 12  +  44 =\t'+'\n\r','quiz.docx')
