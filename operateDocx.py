@@ -79,7 +79,7 @@ def writeDocx(contentList,docxName):
                 if p >= total:
                     hasContent = False
                     break
-                table.rows[i].cells[j].text = str(num) + ')\t' + contentList[0][p]
+                table.rows[i].cells[j].text = contentList[0][p]
                 num = num +1
                 p = p + 1
         # document.add_paragraph('----------------------------------------------------------------------------------------------------------------------')
