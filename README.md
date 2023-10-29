@@ -7,4 +7,8 @@ To generate quizs for pupil automatically and output them to a word document.(�
 用法：
 Python auto-generate-quiz.py
 
+依赖：
+pip3 install typing_extensions==4.3.0
+pip3 install python-docx
+
 可生成3000道随机的两位数加减法题目，结果限制在100以内
