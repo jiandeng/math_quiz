@@ -58,12 +58,20 @@ def write(quizList, keyList, pdfName):
         if i % quizzes_per_page == 0:
             # Add page number to the current page
             c.drawString(page_width - 50, 10, f"{page_number}/{total_pages}")
+            # Add meta data to the current pate
+            c.drawString(100, 30, f"Date:___________")
+            c.drawString(240, 30, f"Score:___________")
+            c.drawString(380, 30, f"Time:___________")
             # Save the current page and start a new one
             c.showPage()
             page_number += 1
 
     # Add page number to the last page
     c.drawString(page_width - 50, 10, f"{page_number}/{total_pages}")
+    # Add meta data to the last page
+    c.drawString(100, 30, f"Date:___________")
+    c.drawString(240, 30, f"Score:___________")
+    c.drawString(380, 30, f"Time:___________")
 
     # Save the PDF document
     c.save()
