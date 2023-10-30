@@ -9,7 +9,7 @@ Script using:
 '''
 
 import random
-import operateDocx
+import operatePdf
 
 '''
 define a method called 'calculate' with 3 parameters: number1, number2 and expression.
@@ -159,8 +159,8 @@ if __name__=="__main__":
 
 #####generate 2 number expression.
     number_quizes = 50
-    file_name = 'quiz-multiply.docx'
+    file_name = 'quiz-multiply.pdf'
 
     myQuiz = generateQuiz(number_quizes)
-    operateDocx.writeDocx(myQuiz, file_name)
+    operatePdf.write(myQuiz[0], myQuiz[1], file_name)
     print('{} generated!'.format(file_name))
