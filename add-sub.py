@@ -150,7 +150,7 @@ def generateQuiz(amout):
         else:
             exp = generateThreeExp()
         rnd = makeRandomInt(1, 100)
-        pos = 0 if rnd < 70 else 1 if rnd < 85 else 2
+        pos = 0 if rnd < 50 else 1 if rnd < 75 else 2
         fexp = formatExpression(exp, pos)
         expression.append(fexp[0])
         results.append(fexp[1])

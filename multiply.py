@@ -57,7 +57,7 @@ def generateExpression():
     exp = []
     exp.append('×')
     exp.append(makeRandomInt(2, 10))
-    exp.append(makeRandomInt(2, 10))
+    exp.append(makeRandomInt(3, 12))
     return exp
 
 
@@ -96,7 +96,9 @@ def generateQuiz(amout):
 #        r = random.randint(0,1)
         exp = generateExpression()
         rnd = makeRandomInt(1, 100)
-        pos = 0 if rnd < 40 else 1 if rnd < 60 else 2 if rnd < 80 else 3
+        pos = 0 if rnd < 20 else 1 if rnd < 40 else 2 if rnd < 60 else 3
+        if max(exp[1], exp[2]) > 10:
+            pos = 0
         fexp = formatExpression(exp, pos)
         expression.append(fexp[0])
         results.append(fexp[1])
