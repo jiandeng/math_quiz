@@ -61,19 +61,21 @@ def generateExpression():
     exp.append(makeRandomOper())
     exp.append(makeRandomInt(10,99))
     exp.append(makeRandomInt(10, 99))
-# the second number need follow more critical rules by using new method
-# produceNum(givenNum,Oper,max)
-    if exp[0]=='+':
-        return exp
-    if exp[0]=='-':
-        if exp[1]>exp[2]:
-            return exp
-        else:
-            two = exp.pop(1)
-            one = exp.pop(1)
-            exp.append(one)
-            exp.append(two)
-            return exp
+
+    if exp[0] == '-' and exp[1] < exp[2]:
+        exp[1], exp[2] = exp[2], exp[1]
+
+    if exp[0] == '+' and exp[1] % 10 + exp[2] % 10 < 10:
+        rnd = random.randint(0, 100)
+        if rnd >= 10:
+            return generateExpression()
+
+    if exp[0] == '-' and exp[1] % 10 > exp[2] % 10:
+        rnd = random.randint(0, 100)
+        if rnd >= 10:
+            return generateExpression()
+
+    return exp
 
 
 def generateThreeExp():
@@ -150,7 +152,7 @@ def generateQuiz(amout):
         else:
             exp = generateThreeExp()
         rnd = makeRandomInt(1, 100)
-        pos = 0 if rnd < 50 else 1 if rnd < 75 else 2
+        pos = 0 if rnd < 40 else 1 if rnd < 70 else 2
         fexp = formatExpression(exp, pos)
         expression.append(fexp[0])
         results.append(fexp[1])
