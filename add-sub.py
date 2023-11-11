@@ -137,13 +137,13 @@ def formatExpression(exp, pos):
 this method produce a quiz and return quiz as a list.
 e.g: [[exp1,exp2,exp3],[res1,res2,res3]]
 '''
-def generateQuiz(amout):
+def generateQuiz(amount):
     quiz = []
     expression = []
     results = []
     quiz.append(expression)
     quiz.append(results)
-    for i in range(amout):
+    while len(expression) < amount:
 # use this variable r to control 2 or 3 expression
 #        r = random.randint(0,1)
         r = 0
@@ -154,8 +154,9 @@ def generateQuiz(amout):
         rnd = makeRandomInt(1, 100)
         pos = 0 if rnd < 40 else 1 if rnd < 70 else 2
         fexp = formatExpression(exp, pos)
-        expression.append(fexp[0])
-        results.append(fexp[1])
+        if not fexp[0] in expression:
+            expression.append(fexp[0])
+            results.append(fexp[1])
     return quiz
 
 '''

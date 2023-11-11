@@ -57,7 +57,11 @@ def generateExpression():
     exp = []
     exp.append('×')
     exp.append(makeRandomInt(2, 10))
-    exp.append(makeRandomInt(3, 12))
+    exp.append(makeRandomInt(3, 19))
+    if exp[2] > 11:
+        rnd = random.randint(0, 100)
+        if rnd >= 15:
+            return generateExpression()
     return exp
 
 
@@ -85,13 +89,13 @@ def formatExpression(exp, pos):
 this method produce a quiz and return quiz as a list.
 e.g: [[exp1,exp2,exp3],[res1,res2,res3]]
 '''
-def generateQuiz(amout):
+def generateQuiz(amount):
     quiz = []
     expression = []
     results = []
     quiz.append(expression)
     quiz.append(results)
-    for i in range(amout):
+    while len(expression) < amount:
 # use this variable r to control 2 or 3 expression
 #        r = random.randint(0,1)
         exp = generateExpression()
@@ -100,8 +104,9 @@ def generateQuiz(amout):
         if max(exp[1], exp[2]) > 10:
             pos = 0
         fexp = formatExpression(exp, pos)
-        expression.append(fexp[0])
-        results.append(fexp[1])
+        if not fexp[0] in expression:
+            expression.append(fexp[0])
+            results.append(fexp[1])
     return quiz
 
 '''
