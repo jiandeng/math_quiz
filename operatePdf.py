@@ -1,12 +1,16 @@
 #!--encoding=utf-8--!
 from reportlab.lib.pagesizes import letter
 from reportlab.pdfgen import canvas
+from reportlab.pdfbase import pdfmetrics
+from reportlab.pdfbase.ttfonts import TTFont
 from math import ceil
 
 number_columns = 3
 quiz_height = 30
 top_margin = 60
 left_margin = 40
+
+pdfmetrics.registerFont(TTFont('SimSun', 'SimSun.ttf'))
 
 # Function to set quiz size
 def set_layout(columns_per_line, height_of_row):
@@ -24,11 +28,12 @@ def write(quizList, keyList, pdfName):
     c = canvas.Canvas(pdfName, pagesize=letter)
 
     # Set font and font size
-    c.setFont("Helvetica", 14)
+    #  c.setFont("Helvetica", 14)
+    c.setFont("SimSun", 13)
 
     # Calculate page dimensions
     page_width, page_height = letter
-    usable_page_width = page_width - 2 * left_margin
+    usable_page_width = page_width - 1 * left_margin
     usable_page_height = page_height - 2 * top_margin
 
     # Calculate number of rows
