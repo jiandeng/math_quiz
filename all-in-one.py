@@ -55,6 +55,28 @@ def makeRandomOper():
     index = random.randint(0,2)
     return exp[index]
 
+def generateHundredExp():
+    # Generate the operands
+    operand = []
+    for _ in range(2):
+        operand.append(random.randint(100, 999))
+
+    # Generate the operations
+    operator = []
+    operator.append(random.choice(['+', '-']))
+
+    # Switch operands if necessary
+    if operator[0] == '-':
+        if operand[0] < operand[1]:
+            operand[0], operand[1] = operand[1], operand[0]
+
+    # Create the expression
+    exp = []
+    exp.extend(operator)
+    exp.extend(operand)
+
+    return exp
+
 def generateThreeExp():
     # Generate the operands
     operand = []
@@ -199,6 +221,8 @@ def generateExpression(ops):
         return generateMoneyExp()
     elif ops.startswith('m'):
         return generateLengthExp()
+    elif ops.startswith('h'):
+        return generateHundredExp()
     else:
         return None
 
@@ -319,7 +343,7 @@ def generateQuiz(amount):
     while len(expression) < amount:
 # use this variable r to control 2 or 3 expression
         rnd = makeRandomInt(1, 100)
-        ops = '|' if rnd < 40 else '÷' if rnd < 60 else '×' if rnd < 80 else '$' if rnd < 90 else 'm'
+        ops = '|' if rnd < 30 else '÷' if rnd < 45 else '×' if rnd < 60 else '$' if rnd < 75 else 'm' if rnd < 90 else 'h'
         exp = generateExpression(ops)
         rnd = makeRandomInt(1, 100)
         if exp[0] == '×':
@@ -401,5 +425,6 @@ if __name__=="__main__":
 
     myQuiz = generateQuiz(number_quizes)
     operatePdf.set_margin(50, 10)
+    operatePdf.set_layout(columns_per_line=3, height_of_row=40)
     operatePdf.write(myQuiz[0], myQuiz[1], file_name)
     print('{} generated!'.format(file_name))
