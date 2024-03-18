@@ -54,8 +54,8 @@ def write(quizList, keyList, pdfName):
     page_number = 1
     for i, content in enumerate(quizList, start=1):
         # Calculate the position for each item
-        x = x_start + (((i - 1) - (page_number - 1) * quizzes_per_page) % 3) * quiz_width
-        y = y_start - (((i - 1) - (page_number - 1) * quizzes_per_page) // 3) * quiz_height
+        x = x_start + (((i - 1) - (page_number - 1) * quizzes_per_page) % number_columns) * quiz_width
+        y = y_start - (((i - 1) - (page_number - 1) * quizzes_per_page) // number_columns) * quiz_height
         # Write the content to the PDF
         c.drawString(x, y, f"{content}")
 
